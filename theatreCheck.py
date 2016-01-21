@@ -33,7 +33,6 @@ def checkALocation(all_movies, location,start_date=datetime.date.today(),n_days=
       webRes.raise_for_status()
       soup = bs4.BeautifulSoup(webRes.text, "html.parser")
       fullMovieTags = soup.select('.showtime-card.showtime-single')
-
       for movieTag in fullMovieTags:
           showTimesList = []
           curMovieName = movieTag.find("a", {"class":"movie-details-link-click"}).getText()
@@ -59,9 +58,7 @@ def checkAllLocations(shelveFileName):
     raise Exception('No Locations Found')
   if len(all_movies)==0:
     raise Exception('No Movies Found')
-
   shelveFile.close()
-
   for location in all_locations:
     location=location.replace(' ','-')
     checkALocation(all_movies, location,n_days=11)
@@ -81,7 +78,6 @@ def main():
   shelveFileName = 'movieGroups'
   if len(sys.argv) <= 1:
       checkAllLocations(shelveFileName)
-
   elif len(sys.argv) == 2:
       arg1 = sys.argv[1]
       if arg1 == '-ls':
@@ -92,7 +88,6 @@ def main():
           showhelp()
       else:
           shelveGrouping.opengroup(arg1[1:])
-
   else:
       if sys.argv[1] == '-a':
           shelveGrouping.addToGroup(shelveFileName, sys.argv[2][1:], sys.argv[3:])
