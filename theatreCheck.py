@@ -1,4 +1,4 @@
-# !/usr/bin/env python3
+#!/usr/bin/env python3
 # Allows creation and modification of movie name groups using the shelveGrouping module.
 # This script then checks the cineplex website for the specified locations(also a group in the shelveFile)
 # to check if the movie is on theatre within the next week. The script then texts the number being used
